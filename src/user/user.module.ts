@@ -5,16 +5,8 @@ import { HttpModule } from '@nestjs/axios/dist/http.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 
-@Module({
-  
-  imports: [TypeOrmModule.forFeature([User]), 
-    HttpModule.registerAsync({
-      useFactory: () => ({
-        timeout: 5000,
-        maxRedirects: 5,
-      }),
-    }),
-  ],
+@Module({  
+  imports: [TypeOrmModule.forFeature([User])],
   controllers: [UserController],
   providers: [UserService]
 })
