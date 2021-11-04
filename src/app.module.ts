@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 
@@ -15,6 +16,8 @@ import { UserModule } from './user/user.module';
       synchronize: true
     }),
     UserModule,
+    ScheduleModule.forRoot()
   ],
+  
 })
 export class AppModule {}

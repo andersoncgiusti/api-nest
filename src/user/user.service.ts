@@ -14,12 +14,6 @@ export class UserService {
     
   ) {}
 
-  async create(users) {
-    users.address = { id: users.address}
-    users.company = { id: users.company }
-    return await this.usersRepository.save(this.usersRepository.create(users))
-  }
-
   async createUser(){
     this.httpService.get('https://jsonplaceholder.typicode.com/users').subscribe(async res => {
       for (let user of res.data) {
