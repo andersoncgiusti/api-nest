@@ -1,19 +1,32 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Address } from './address.entity';
+import { Company } from './company.entity';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column()
-  name: string;
+  name: string
 
   @Column()
-  username: string;
+  username: string
 
   @Column()
-  email: string;
+  email: string
+
+  @OneToOne(() => Address, address => address.id, { cascade: true })
+  @JoinColumn()
+  address: Address
 
   @Column()
-  address: string;
+  phone: string
+
+  @Column()
+  website: string
+
+  @OneToOne(() => Company, company => company.id, { cascade: true })
+  @JoinColumn()
+  company: Company
 }
